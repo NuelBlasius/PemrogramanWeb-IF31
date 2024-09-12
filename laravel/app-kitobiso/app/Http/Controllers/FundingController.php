@@ -12,15 +12,12 @@ class FundingController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $data = [
+            'status' => 'success',
+            'message' => 'Data Funding Successfully',
+            'data' => Funding::all(),
+        ];
+        return response()->json($data);
     }
 
     /**
@@ -28,7 +25,24 @@ class FundingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'desc' => 'required|string',
+            'image' => 'required|string',
+            'progress' => 'required|string|max:3',
+            'duration' => 'required|string',
+            'collected' => 'required|numeric',
+            'target' => 'required|numeric',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        $funding = Funding::create($request->all());
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Funding Created Successfully',
+            'data' => $funding,
+        ]);
     }
 
     /**
@@ -36,15 +50,11 @@ class FundingController extends Controller
      */
     public function show(Funding $funding)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Funding $funding)
-    {
-        //
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Funding Data Retrieved Successfully',
+            'data' => $funding,
+        ]);
     }
 
     /**
@@ -52,7 +62,24 @@ class FundingController extends Controller
      */
     public function update(Request $request, Funding $funding)
     {
-        //
+        $request->validate([
+            'title' => 'sometimes|required|string|max:255',
+            'desc' => 'sometimes|required|string',
+            'image' => 'sometimes|required|string',
+            'progress' => 'sometimes|required|string|max:3',
+            'duration' => 'sometimes|required|string',
+            'collected' => 'sometimes|required|numeric',
+            'target' => 'sometimes|required|numeric',
+            'user_id' => 'sometimes|required|exists:users,id',
+        ]);
+
+        $funding->update($request->all());
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Funding Updated Successfully',
+            'data' => $funding,
+        ]);
     }
 
     /**
@@ -60,6 +87,11 @@ class FundingController extends Controller
      */
     public function destroy(Funding $funding)
     {
-        //
+        $funding->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Funding Deleted Successfully',
+        ]);
     }
 }

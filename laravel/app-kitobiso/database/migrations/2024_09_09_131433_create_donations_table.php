@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->double('amount');
             $table->unsignedBigInteger('funding_id');
-            $table->foreign('funding_id')->references('id')->on('fundings');
+            $table->foreign('funding_id')->references('id')->on('fundings')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
