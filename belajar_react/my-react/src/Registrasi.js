@@ -26,10 +26,10 @@ function Registrasi() {
                 Nama : <input type="text" value={nama} onChange={(e) => setNama(e.target.value)}/>
             </label>
             <label>
-                Email : <input type="text" value={email} onChange={(e) => setNama(e.target.value)}/>
+                Email : <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </label>
             <label>
-                Hp : <input type="text" value={hp} onChange={(e) => setNama(e.target.value)}/>
+                Hp : <input type="text" value={hp} onChange={(e) => setHp(e.target.value)}/>
             </label>
             <input type="submit" value={"Submit"}/>
         </form>
