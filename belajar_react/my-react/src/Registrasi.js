@@ -3,7 +3,7 @@ import React from "react";
 function Registrasi() {
     const [email, setEmail] = React.useState("");
     const [nama, setNama] = React.useState("");
-    const [hp, setHP] = React.useState("");
+    const [hp, setHp] = React.useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
