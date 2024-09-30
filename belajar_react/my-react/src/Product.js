@@ -1,13 +1,13 @@
 import React  from "react";
-import image1 from './public/asus.png'
-import image2 from './public/acer.jpg'
-import image3 from './public/lenovo.png'
+// import image1 from '/public/asus.png';
+// import image2 from '/public/acer.jpg';
+// import image3 from '/public/lenovo.png';
 
 function Product() {
     const product = [
-        { id : "P001", nama : "Asus", harga : 8000000, image : image1 },
-        { id : "P002", nama : "Acer", harga : 7000000, image : image12 },
-        { id : "P003", nama : "Lenovo", harga : 9000000, image : image3 },
+        { id : "P001", nama : "Asus", harga : 8000000, image : '/asus.png' },
+        { id : "P002", nama : "Acer", harga : 7000000, image : '/acer.jpg'},
+        { id : "P003", nama : "Lenovo", harga : 9000000, image : '/lenovo.png' },
     ];
     const displayProduct = product.map((product) => (
         <tr key={product.id}>
