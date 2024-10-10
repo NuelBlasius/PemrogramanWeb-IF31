@@ -11,6 +11,9 @@ export default function DashboardLayout({
           <div className="text-white text-lg font-bold">MyApp</div>
           <ul className="flex space-x-8">
             <li>
+              <Link href="/dashboard" className="text-white hover:text-blue-300">Dashboard</Link>
+            </li>
+            <li>
               <Link href="/dashboard/blog" className="text-white hover:text-blue-300">Blog</Link>
             </li>
             <li>
