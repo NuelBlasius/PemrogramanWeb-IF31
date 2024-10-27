@@ -8,3 +8,6 @@ Route::get('/online_trainings', [OnlineTrainingController::class, 'index']);
 Route::post('/online_trainings', [OnlineTrainingController::class, 'store']);
 
 Route::apiResource('online_trainings', OnlineTrainingController::class);
+
+
+// npm install bootstrap
