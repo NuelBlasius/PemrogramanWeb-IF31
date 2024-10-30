@@ -11,3 +11,4 @@ Route::apiResource('online_trainings', OnlineTrainingController::class);
 
 
 // npm install bootstrap
+// composer create-project laravel/laravel nama_proyek
