@@ -28,3 +28,7 @@ Route::post('/online_trainings', [OnlineTrainingController::class, 'store']);
 // npm start
 
 // php artisan install:api
+
+// php artisan make:model nama_model -mcr
+// php artisan make:migration create_nama_tabel_table
+
