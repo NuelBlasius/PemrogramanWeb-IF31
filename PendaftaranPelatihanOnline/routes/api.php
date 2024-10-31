@@ -16,14 +16,13 @@ Route::post('/online_trainings', [OnlineTrainingController::class, 'store']);
 
 // php artisan install:api
 
-// php artisan make:model (nama model) -mcr
-
 // npm install bootstrap
 // php artisan make:resource OnlineTrainingResource
 // composer create-project laravel/laravel nama_proyek
 
-// npx create-next-app@latest nama_proyek
+// npx create-next-app@latest nama_proyek // no, yes, yes, no, yes, no, no
 // npm run dev
+// npm install
 
 // npx create-react-app nama_proyek
 // npm start
