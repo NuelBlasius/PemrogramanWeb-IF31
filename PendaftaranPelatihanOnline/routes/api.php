@@ -14,6 +14,8 @@ Route::post('/online_trainings', [OnlineTrainingController::class, 'store']);
 // App\Models\Post::factory(100)->create();
 // php artisan make:factory //(namaModel)Factory
 
+// php artisan install:api
+
 // npm install bootstrap
 // php artisan make:resource OnlineTrainingResource
 // composer create-project laravel/laravel nama_proyek
