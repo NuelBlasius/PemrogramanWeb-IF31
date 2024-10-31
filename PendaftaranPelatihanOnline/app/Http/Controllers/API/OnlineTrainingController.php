@@ -110,7 +110,7 @@ class OnlineTrainingController extends Controller
 
         // OnlineTraining::create($validate);
 
-        $onlineTraining = OnlineTraining::create($request->all());
+        // $onlineTraining = OnlineTraining::create($request->all());
         
         return response()->json([
             'code' => 200,
@@ -124,7 +124,8 @@ class OnlineTrainingController extends Controller
      */
     public function show(OnlineTraining $onlineTraining)
     {
-        //
+        $onlineTraining = OnlineTraining::findOrFail($id);
+        return new OnlineTrainingResource($onlineTraining);
     }
 
     /**
@@ -140,7 +141,38 @@ class OnlineTrainingController extends Controller
      */
     public function update(Request $request, OnlineTraining $onlineTraining)
     {
-        //
+        $onlineTraining = OnlineTraining::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'participant_name' => 'required|string|max:100',
+            'training_name' => 'required|string|max:100',
+            'training_date' => 'required|date',
+            'location' => 'required|string|max:255',
+            'category' => 'required|string|max:10',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'All fields are mandatory',
+                'error' => $validator->messages(),
+            ], 422);
+        }
+
+        $onlineTraining->update([
+            'participant_name' => $request->participant_name,
+            'training_name' => $request->event_name,
+            'training_date' => $request->training_date,
+            'location' => $request->location,
+            'category' => $request->category,
+        ]);
+
+        // Refresh model untuk mendapatkan data terbaru
+        $onlineTraining->refresh();
+
+        return response()->json([
+            'message' => 'Pendaftaran Update Berhasil',
+            'data' => new OnlineTrainingnResource($onlineTraining),
+        ], 200);
     }
 
     /**
@@ -148,6 +180,10 @@ class OnlineTrainingController extends Controller
      */
     public function destroy(OnlineTraining $onlineTraining)
     {
-        //
+        $onlineTraining = OnlineTraining::findOrFail($id);
+        $onlineTraining->delete();
+        return response()->json([
+            'message' => "Peserta berhasil di hapus"
+        ],200);
     }
 }
