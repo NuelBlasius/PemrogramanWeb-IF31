@@ -14,6 +14,15 @@ class OnlineTrainingResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        // return parent::toArray($request);
+
+        return [
+            'id'=> $this->id,
+            'participant_name' => $this->participant_name,
+            'training_name' => $this->training_name,
+            'training_date' => $this->training_date,
+            'location' => $this->location,
+            'category' => $this->category,
+        ];
     }
 }
