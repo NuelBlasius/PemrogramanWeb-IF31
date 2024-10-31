@@ -17,7 +17,7 @@ class OnlineTrainingController extends Controller
     public function index()
     {
 
-        $onlineTraining = OnlineTraining:get();
+        $onlineTraining = OnlineTraining::get();
         if ($onlineTraining->count() > 0)
         {
              return OnlineTrainingResource::collection($onlineTraining);
@@ -84,7 +84,7 @@ class OnlineTrainingController extends Controller
         //     'category' => 'required|string|max:10',
         // ]);
 
-        OnlineTraining::create([
+        $onlineTraining = OnlineTraining::create([
             'participant_name' => $request->participant_name,
             'training_name' => $request->event_name,
             'training_date' => $request->training_date,
@@ -115,7 +115,7 @@ class OnlineTrainingController extends Controller
         return response()->json([
             'code' => 200,
             'message' => 'Success',
-            'data' => nee OnlineTrainingResource($onlineTraining)
+            'data' => new OnlineTrainingResource($onlineTraining),
         ], 200);
     }
 
